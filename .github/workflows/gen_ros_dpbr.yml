@@ -9,8 +9,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-          chmod +x gen_ros_dpbr.sh
-          ./gen_ros_dpbr.sh
+      - name: Make script executable
+        run: chmod +x gen_ros_dpbr.sh
+
+      - name: Run script
+        run: ./gen_ros_dpbr.sh
