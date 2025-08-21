@@ -1,0 +1,25 @@
+name: 定时生成 ros-dpbr-CT-CMCC.rsc
+
+on:
+  schedule:
+    - cron: '0 2 * * *'   # 每天凌晨2点（UTC）
+  workflow_dispatch:
+
+jobs:
+  gen-ros-dpbr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 安装 wget
+        run: sudo apt-get update && sudo apt-get install -y wget
+
+      - name: 生成 ros-dpbr-CT-CMCC.rsc
+        run: bash scripts/gen_ros_dpbr.sh
+
+      - name: 上传生成的 rsc 文件
+        uses: actions/upload-artifact@v4
+        with:
+          name: ros-dpbr-CT-CMCC
+          path: ros-dpbr-CT-CMCC.rsc
