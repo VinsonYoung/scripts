@@ -1,4 +1,6 @@
 #!/bin/sh
+set -e
+
 mkdir -p ./pbr
 cd ./pbr
 
@@ -56,11 +58,6 @@ for net in $(cat other.txt) ; do
   echo "add list=dpbr-CT address=$net"
 done
 } | awk '!seen[$0]++' > ../ros-dpbr-CT-CMCC.rsc
-
-ls -lh ../ros-dpbr-CT-CMCC.rsc
-
-# 移动结果文件到仓库根目录
-mv ros-dpbr-CT-CMCC.rsc ../
 
 cd ..
 rm -rf ./pbr
