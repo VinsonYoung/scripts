@@ -9,8 +9,8 @@ jobs:
   gen-ros-dpbr:
     runs-on: ubuntu-latest
     steps:
-      - name: 检出代码
-        uses: actions/checkout@v4
+      - name: Checkout
+          uses: actions/checkout@v2
 
           chmod +x gen_ros_dpbr.sh
           ./gen_ros_dpbr.sh
