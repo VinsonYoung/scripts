@@ -20,10 +20,13 @@ jobs:
       - name: Run script
         run: ./gen_ros_dpbr.sh
 
-      - name: Set git user info
+      - name: Set up git for push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Commit and push to main
         run: |
@@ -31,9 +34,4 @@ jobs:
           git commit -m "自动生成最新 ros-dpbr-CT-CMCC.rsc [ci skip]" || echo "Nothing to commit"
           git push origin main
         env:
-          GIT_AUTHOR_NAME: github-actions[bot]
-          GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
-          GIT_COMMITTER_NAME: github-actions[bot]
-          GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
-          # 注意：需要在仓库 Secrets 添加 GH_TOKEN 或 PAT，且有写 main 分支的权限
-          # GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
