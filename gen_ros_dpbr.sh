@@ -59,5 +59,8 @@ done
 
 ls -lh ../ros-dpbr-CT-CMCC.rsc
 
+# 移动结果文件到仓库根目录
+mv ros-dpbr-CT-CMCC.rsc ../
+
 cd ..
-#rm -rf ./pbr   # 不建议删除，除非你已经处理完 artifact 上传
+rm -rf ./pbr
