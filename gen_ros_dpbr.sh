@@ -55,10 +55,9 @@ done
 for net in $(cat other.txt) ; do
   echo "add list=dpbr-CT address=$net"
 done
-} | awk '!seen[$0]++' > ros-dpbr-CT-CMCC.rsc
+} | awk '!seen[$0]++' > ../ros-dpbr-CT-CMCC.rsc
 
-ls -lh ros-dpbr-CT-CMCC.rsc
-
+ls -lh ../ros-dpbr-CT-CMCC.rsc
 
 cd ..
-rm -rf ./pbr
+#rm -rf ./pbr   # 不建议删除，除非你已经处理完 artifact 上传
