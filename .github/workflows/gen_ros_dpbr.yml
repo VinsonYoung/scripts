@@ -16,7 +16,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y wget
 
       - name: 生成 ros-dpbr-CT-CMCC.rsc
-        run: bash scripts/gen_ros_dpbr.sh
+        run: bash gen_ros_dpbr.sh
 
       - name: 上传生成的 rsc 文件
         uses: actions/upload-artifact@v4
