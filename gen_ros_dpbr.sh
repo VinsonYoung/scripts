@@ -58,3 +58,7 @@ done
 } | awk '!seen[$0]++' > ros-dpbr-CT-CMCC.rsc
 
 ls -lh ros-dpbr-CT-CMCC.rsc
+
+
+cd ..
+rm -rf ./pbr
