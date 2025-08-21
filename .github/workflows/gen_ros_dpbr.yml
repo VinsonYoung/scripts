@@ -12,14 +12,7 @@ jobs:
       - name: 检出代码
         uses: actions/checkout@v4
 
-      - name: 安装 wget
-        run: sudo apt-get update && sudo apt-get install -y wget
-
-      - name: 生成 ros-dpbr-CT-CMCC.rsc
-        run: bash gen_ros_dpbr.sh
-
-      - name: 上传生成的 rsc 文件
-        uses: actions/upload-artifact@v4
-        with:
-          name: ros-dpbr-CT-CMCC
-          path: ros-dpbr-CT-CMCC.rsc
+      - name: download cidr
+          run: |
+          chmod +x ros-dpbr.sh
+          ./ros-dpbr.sh
