@@ -20,11 +20,21 @@ jobs:
       - name: Run script
         run: ./gen_ros_dpbr.sh
 
+      - name: Create tag
+        run: |
+          TAG="auto-$(date +'%Y%m%d')"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag $TAG
+          git push origin $TAG
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
       - name: Create Release and upload rsc file
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: "auto-$(date +'%Y%m%d')"
-          name: "自动发行 $(date +'%Y-%m-%d')"
+          tag_name: "auto-${{ steps.create_tag.outputs.tag }}"
+          name: "自动发行 ${{ steps.create_tag.outputs.tag }}"
           files: ros-dpbr-CT-CMCC.rsc
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
