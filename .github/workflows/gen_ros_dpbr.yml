@@ -1,4 +1,4 @@
-name: 定时生成并推送 ros-dpbr-CT-CMCC.rsc 到 main
+name: 定时生成并发行 ros-dpbr-CT-CMCC.rsc
 
 on:
   schedule:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build_and_push:
+  release_file:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main
@@ -20,20 +20,11 @@ jobs:
       - name: Run script
         run: ./gen_ros_dpbr.sh
 
-      - name: Set up git for push
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          git remote -v
-          echo "Token length:" $(echo $GH_TOKEN | wc -c)
+      - name: Create Release and upload rsc file
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "auto-$(date +'%Y%m%d')"
+          name: "自动发行 $(date +'%Y-%m-%d')"
+          files: ros-dpbr-CT-CMCC.rsc
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-
-      - name: Commit and push to main
-        run: |
-          git add ros-dpbr-CT-CMCC.rsc
-          git commit -m "自动生成最新 ros-dpbr-CT-CMCC.rsc [ci skip]" || echo "Nothing to commit"
-          git push origin main
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
