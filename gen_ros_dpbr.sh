@@ -1,46 +1,58 @@
-#!/bin/bash
+#!/bin/sh
+mkdir -p ./pbr
+cd ./pbr
 
-set -e
+# 电信
+wget --no-check-certificate -c -O ct.txt https://ispip.clang.cn/chinatelecom_cidr.txt
+grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}(\/[0-9]{1,2})?" ct.txt > ct.txt.tmp; mv ct.txt.tmp ct.txt
+# 联通
+wget --no-check-certificate -c -O cu.txt https://ispip.clang.cn/unicom_cnc_cidr.txt
+grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}(\/[0-9]{1,2})?" cu.txt > cu.txt.tmp; mv cu.txt.tmp cu.txt
+# 移动
+wget --no-check-certificate -c -O cm.txt https://ispip.clang.cn/cmcc_cidr.txt
+grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}(\/[0-9]{1,2})?" cm.txt > cm.txt.tmp; mv cm.txt.tmp cm.txt
+# 铁通
+wget --no-check-certificate -c -O crtc.txt https://ispip.clang.cn/crtc_cidr.txt
+grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}(\/[0-9]{1,2})?" crtc.txt > crtc.txt.tmp; mv crtc.txt.tmp crtc.txt
+# 教育网
+wget --no-check-certificate -c -O cernet.txt https://ispip.clang.cn/cernet_cidr.txt
+grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}(\/[0-9]{1,2})?" cernet.txt > cernet.txt.tmp; mv cernet.txt.tmp cernet.txt
+# 长城宽带/鹏博士
+wget --no-check-certificate -c -O gwbn.txt https://ispip.clang.cn/gwbn_cidr.txt
+grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}(\/[0-9]{1,2})?" gwbn.txt > gwbn.txt.tmp; mv gwbn.txt.tmp gwbn.txt
+# 其他
+wget --no-check-certificate -c -O other.txt https://ispip.clang.cn/othernet_cidr.txt
+grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}(\/[0-9]{1,2})?" other.txt > other.txt.tmp; mv other.txt.tmp other.txt
 
-# 下载 ISP 地址
-declare -A ops=(
-  ["ct"]="dpbr-CT"      # 电信
-  ["cu"]="dpbr-CT"      # 联通
-  ["edu"]="dpbr-CT"     # 教育网
-  ["drpeng"]="dpbr-CT"  # 鹏博士
-  ["broadnet"]="dpbr-CT" # 广电
-  ["gwbn"]="dpbr-CT"    # 长城宽带
-  ["others"]="dpbr-CT"  # 其他
-  ["cm"]="dpbr-CMCC"    # 移动
-)
+# 生成 Mikrotik address-list 并去重
+{
+echo "/ip firewall address-list"
 
-base_url="https://ispip.clang.cn"
-
-tmp_dir="$(mktemp -d)"
-out_file="ros-dpbr-CT-CMCC.rsc"
-
-# 下载所有ISP文件到临时目录
-for op in "${!ops[@]}"; do
-  wget --no-check-certificate -O "$tmp_dir/$op.txt" "$base_url/$op.txt"
+for net in $(cat ct.txt) ; do
+  echo "add list=dpbr-CT address=$net"
 done
 
-# 生成 MikroTik address-list 语句，去重
-{
-  echo "/ip firewall address-list"
-  # 用 associative array 去重
-  declare -A seen
-  for op in "${!ops[@]}"; do
-    list="${ops[$op]}"
-    while read -r addr; do
-      addr="${addr//[$'\r\n']}" # 去掉换行回车
-      [[ -z "$addr" ]] && continue
-      # 地址去重
-      if [[ -z "${seen[$addr]}" ]]; then
-        seen[$addr]=1
-        echo "add list=$list address=$addr"
-      fi
-    done < "$tmp_dir/$op.txt"
-  done
-} > "$out_file"
+for net in $(cat cu.txt) ; do
+  echo "add list=dpbr-CT address=$net"
+done
 
-rm -rf "$tmp_dir"
+for net in $(cat cm.txt) ; do
+  echo "add list=dpbr-CMCC address=$net"
+done
+
+for net in $(cat crtc.txt) ; do
+  echo "add list=dpbr-CMCC address=$net"
+done
+
+for net in $(cat cernet.txt) ; do
+  echo "add list=dpbr-CT address=$net"
+done
+
+for net in $(cat gwbn.txt) ; do
+  echo "add list=dpbr-CT address=$net"
+done
+
+for net in $(cat other.txt) ; do
+  echo "add list=dpbr-CT address=$net"
+done
+} | awk '!seen[$0]++' > ../ros-dpbr-CT-CMCC.rsc
