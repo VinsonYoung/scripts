@@ -55,4 +55,6 @@ done
 for net in $(cat other.txt) ; do
   echo "add list=dpbr-CT address=$net"
 done
-} | awk '!seen[$0]++' > ../ros-dpbr-CT-CMCC.rsc
+} | awk '!seen[$0]++' > ros-dpbr-CT-CMCC.rsc
+
+ls -lh ros-dpbr-CT-CMCC.rsc
