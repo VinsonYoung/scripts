@@ -12,6 +12,5 @@ jobs:
       - name: 检出代码
         uses: actions/checkout@v4
 
-      - name: download cidr
-          chmod +x ros-dpbr.sh
-          ./ros-dpbr.sh
+          chmod +x gen_ros_dpbr.sh
+          ./gen_ros_dpbr.sh
