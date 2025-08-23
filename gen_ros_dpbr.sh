@@ -14,8 +14,8 @@ grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}(\/[0-9]{1,2})?" cu.txt > cu.txt.tmp; m
 wget --no-check-certificate -c -O cm.txt https://ispip.clang.cn/cmcc.txt
 grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}(\/[0-9]{1,2})?" cm.txt > cm.txt.tmp; mv cm.txt.tmp cm.txt
 # 广电
-# wget --no-check-certificate -c -O chinabtn.txt https://ispip.clang.cn/chinabtn.txt
-# grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}(\/[0-9]{1,2})?" crtc.txt > crtc.txt.tmp; mv crtc.txt.tmp crtc.txt
+wget --no-check-certificate -c -O chinabtn.txt https://ispip.clang.cn/chinabtn.txt
+grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}(\/[0-9]{1,2})?" crtc.txt > crtc.txt.tmp; mv crtc.txt.tmp crtc.txt
 # 教育网
 wget --no-check-certificate -c -O cernet.txt https://ispip.clang.cn/cernet.txt
 grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}(\/[0-9]{1,2})?" cernet.txt > cernet.txt.tmp; mv cernet.txt.tmp cernet.txt
