@@ -3470,6 +3470,7 @@ add list=dpbr-CT address=1.94.0.0/15
 add list=dpbr-CT address=1.116.0.0/15
 add list=dpbr-CT address=1.118.2.0/24
 add list=dpbr-CT address=1.118.32.0/22
+add list=dpbr-CT address=1.118.36.0/24
 add list=dpbr-CT address=1.119.0.0/17
 add list=dpbr-CT address=1.119.192.0/20
 add list=dpbr-CT address=8.128.32.0/19
