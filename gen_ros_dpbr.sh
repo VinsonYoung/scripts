@@ -23,7 +23,7 @@ grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}(\/[0-9]{1,2})?" cernet.txt > cernet.tx
 wget --no-check-certificate -c -O gwbn.txt https://ispip.clang.cn/gwbn.txt
 grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}(\/[0-9]{1,2})?" gwbn.txt > gwbn.txt.tmp; mv gwbn.txt.tmp gwbn.txt
 # 其他
-wget --no-check-certificate -c -O other.txt https://ispip.clang.cn/other.txt
+wget --no-check-certificate -c -O other.txt https://ispip.clang.cn/othernet.txt
 grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}(\/[0-9]{1,2})?" other.txt > other.txt.tmp; mv other.txt.tmp other.txt
 
 # 生成 Mikrotik address-list 并去重
