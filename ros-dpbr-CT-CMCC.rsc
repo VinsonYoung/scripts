@@ -2330,7 +2330,6 @@ add list=dpbr-CT address=118.194.48.0/21
 add list=dpbr-CT address=118.194.240.0/21
 add list=dpbr-CT address=118.212.0.0/16
 add list=dpbr-CT address=119.4.0.0/14
-add list=dpbr-CT address=119.27.64.0/18
 add list=dpbr-CT address=119.32.0.0/15
 add list=dpbr-CT address=119.34.0.0/17
 add list=dpbr-CT address=119.36.0.0/16
@@ -2436,7 +2435,6 @@ add list=dpbr-CT address=123.148.0.0/16
 add list=dpbr-CT address=123.152.0.0/13
 add list=dpbr-CT address=123.188.0.0/14
 add list=dpbr-CT address=123.232.0.0/14
-add list=dpbr-CT address=124.6.64.0/18
 add list=dpbr-CT address=124.14.64.0/18
 add list=dpbr-CT address=124.14.224.0/19
 add list=dpbr-CT address=124.42.64.0/18
@@ -2715,7 +2713,7 @@ add list=dpbr-CT address=211.96.0.0/16
 add list=dpbr-CT address=211.97.0.0/17
 add list=dpbr-CT address=211.97.128.0/19
 add list=dpbr-CT address=211.97.160.0/21
-add list=dpbr-CT address=211.97.190.0/23
+add list=dpbr-CT address=211.97.176.0/20
 add list=dpbr-CT address=211.97.192.0/18
 add list=dpbr-CT address=211.99.32.0/19
 add list=dpbr-CT address=211.99.64.0/19
@@ -3027,6 +3025,7 @@ add list=dpbr-CMCC address=103.239.244.0/23
 add list=dpbr-CMCC address=103.252.36.0/22
 add list=dpbr-CMCC address=103.253.232.0/22
 add list=dpbr-CMCC address=103.255.68.0/24
+add list=dpbr-CMCC address=103.255.71.0/24
 add list=dpbr-CMCC address=106.3.144.0/21
 add list=dpbr-CMCC address=106.13.252.0/22
 add list=dpbr-CMCC address=106.75.0.0/17
@@ -4101,6 +4100,7 @@ add list=dpbr-CT address=103.175.197.0/24
 add list=dpbr-CT address=103.177.28.0/23
 add list=dpbr-CT address=103.179.78.0/23
 add list=dpbr-CT address=103.180.108.0/23
+add list=dpbr-CT address=103.181.164.0/23
 add list=dpbr-CT address=103.183.66.0/23
 add list=dpbr-CT address=103.183.218.0/23
 add list=dpbr-CT address=103.184.46.0/23
@@ -4865,11 +4865,12 @@ add list=dpbr-CT address=161.163.0.0/21
 add list=dpbr-CT address=161.163.28.0/23
 add list=dpbr-CT address=161.189.0.0/16
 add list=dpbr-CT address=162.14.0.0/16
+add list=dpbr-CT address=162.141.4.0/24
 add list=dpbr-CT address=162.141.138.0/24
 add list=dpbr-CT address=163.53.46.0/23
 add list=dpbr-CT address=163.53.128.0/22
 add list=dpbr-CT address=163.223.173.0/24
-add list=dpbr-CT address=163.223.179.0/24
+add list=dpbr-CT address=163.223.178.0/23
 add list=dpbr-CT address=163.228.0.0/16
 add list=dpbr-CT address=163.244.246.0/24
 add list=dpbr-CT address=165.101.122.0/23
