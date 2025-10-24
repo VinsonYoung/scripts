@@ -2441,7 +2441,7 @@ add list=dpbr-CT address=123.103.24.0/22
 add list=dpbr-CT address=123.103.28.0/23
 add list=dpbr-CT address=123.103.30.0/24
 add list=dpbr-CT address=123.103.64.0/18
-add list=dpbr-CT address=123.108.88.0/23
+add list=dpbr-CT address=123.108.88.0/24
 add list=dpbr-CT address=123.108.208.0/22
 add list=dpbr-CT address=123.108.212.0/23
 add list=dpbr-CT address=123.108.220.0/22
@@ -3621,7 +3621,7 @@ add list=dpbr-CT address=43.240.136.0/22
 add list=dpbr-CT address=43.240.192.0/23
 add list=dpbr-CT address=43.241.76.0/22
 add list=dpbr-CT address=43.242.84.0/22
-add list=dpbr-CT address=43.242.98.0/23
+add list=dpbr-CT address=43.242.96.0/22
 add list=dpbr-CT address=43.242.192.0/22
 add list=dpbr-CT address=43.242.252.0/22
 add list=dpbr-CT address=43.247.84.0/22
@@ -4065,7 +4065,9 @@ add list=dpbr-CT address=103.133.128.0/23
 add list=dpbr-CT address=103.133.176.0/22
 add list=dpbr-CT address=103.134.136.0/22
 add list=dpbr-CT address=103.135.100.0/24
-add list=dpbr-CT address=103.135.192.0/21
+add list=dpbr-CT address=103.135.192.0/23
+add list=dpbr-CT address=103.135.195.0/24
+add list=dpbr-CT address=103.135.196.0/22
 add list=dpbr-CT address=103.138.156.0/23
 add list=dpbr-CT address=103.139.136.0/23
 add list=dpbr-CT address=103.139.172.0/23
@@ -4187,6 +4189,7 @@ add list=dpbr-CT address=103.245.128.0/22
 add list=dpbr-CT address=103.247.176.0/22
 add list=dpbr-CT address=103.248.152.0/24
 add list=dpbr-CT address=103.249.136.0/24
+add list=dpbr-CT address=103.249.244.0/24
 add list=dpbr-CT address=103.250.252.0/22
 add list=dpbr-CT address=103.251.84.0/22
 add list=dpbr-CT address=103.251.204.0/23
@@ -4700,7 +4703,7 @@ add list=dpbr-CT address=123.58.186.0/23
 add list=dpbr-CT address=123.58.188.0/22
 add list=dpbr-CT address=123.60.0.0/16
 add list=dpbr-CT address=123.83.128.0/17
-add list=dpbr-CT address=123.108.88.0/24
+add list=dpbr-CT address=123.108.88.0/23
 add list=dpbr-CT address=123.206.0.0/15
 add list=dpbr-CT address=123.249.0.0/17
 add list=dpbr-CT address=123.253.226.0/24
